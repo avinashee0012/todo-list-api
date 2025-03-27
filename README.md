@@ -10,6 +10,8 @@ A RESTful API to allow users to manage their to-do list. The previous backend pr
 - Error handling
 - Security
 
+![Data Flow](images/data_flow.png)
+
 ### Technologies Used:
 - **Backend:** Java, Springboot, MySQL, Spring Data JPA, Rest API, Authentication, Input Validation
 - **Source Code Management:** Git, GitHub, Maven
