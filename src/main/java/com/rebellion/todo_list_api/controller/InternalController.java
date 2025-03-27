@@ -10,14 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("")
-public class Health {
+public class InternalController {
 
     @GetMapping("")
-    public HashMap<String, String> getMethodName(HttpServletRequest request) {
+    public HashMap<String, String> getApplicationStatus(HttpServletRequest request) {
         HashMap<String, String> map = new HashMap<>();
         map.put("Status", "Running");
         map.put("URL", request.getRequestURL().toString());
         return map;
     }
+
+    @GetMapping("/health")
+    public HashMap<String, String> getHealthPage() {
+        HashMap<String, String> map = new HashMap<>();
+        // TODO: List of all API endpoints and it's health
+        return map;
+    }
+    
     
 }
