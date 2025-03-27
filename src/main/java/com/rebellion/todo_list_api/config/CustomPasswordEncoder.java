@@ -4,7 +4,7 @@ public class CustomPasswordEncoder {
 
     public String encode(String rawPassword) {
         char[] arr = rawPassword.toCharArray();
-        String s = "afkakslkaksldk8798273gquiwjqnwmkln8798273sdjkabsjdgyuqwjejqweknjkhj89821asnlkdnkliujkjhkljkwggwjk45654865";
+        String s = "zxc5xcc5x598xczxc5bdjhpojklnJKgjha548asd8s4d5zxc5x598xczxc5x598iqkwdjc5x598xczxc5kasjkc5x598xczxc5bdjhpojklnJKgjha548a1asdf8489aw".toUpperCase();
         StringBuilder sb = new StringBuilder();
         for (char c : arr) {
             if( c >= 1 && c <= 60 && c % 2 == 0) {
@@ -13,6 +13,9 @@ public class CustomPasswordEncoder {
                 sb.append(s.charAt(c-50));
             } else {
                 sb.append(s.charAt(c-122));
+            }
+            for (int i = 0; i < (15-sb.length()); i++) {
+                sb.append(s.charAt(i));
             }
         }
         return sb.toString();

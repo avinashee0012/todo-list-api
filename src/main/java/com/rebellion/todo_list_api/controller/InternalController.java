@@ -19,13 +19,4 @@ public class InternalController {
         map.put("URL", request.getRequestURL().toString());
         return map;
     }
-
-    @GetMapping("/health")
-    public HashMap<String, String> getHealthPage() {
-        HashMap<String, String> map = new HashMap<>();
-        // TODO: List of all API endpoints and it's health
-        return map;
-    }
-    
-    
 }
