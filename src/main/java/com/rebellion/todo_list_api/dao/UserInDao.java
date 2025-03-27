@@ -2,10 +2,15 @@ package com.rebellion.todo_list_api.dao;
 
 import com.rebellion.todo_list_api.entity.User;
 
-// TODO: Implement proper data validation
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+
 public class UserInDao {
-    private String name;
+    private String name = "John Doe";
+    @NotEmpty(message = "Email cannot be empty!")
     private String email;
+    @NotEmpty(message = "Password cannot be empty!")
+    @Size(min = 8, message = "Description cannot be less than 8 characters.")
     private String password;
 
     public UserInDao() {

@@ -1,5 +1,7 @@
 package com.rebellion.todo_list_api.entity;
 
+import com.rebellion.todo_list_api.dao.TaskOutDao;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -52,5 +54,13 @@ public class Task {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public TaskOutDao toTaskOutDao() {
+        TaskOutDao dao = new TaskOutDao();
+        dao.setTitle(title);
+        dao.setDescription(description);
+        dao.setUserid(user.getId());
+        return dao;
     }
 }

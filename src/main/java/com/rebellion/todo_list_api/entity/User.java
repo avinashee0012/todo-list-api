@@ -64,10 +64,17 @@ public class User {
         this.password = new CustomPasswordEncoder().encode(password);
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     public UserOutDao toUserOutDao() {
         UserOutDao dao = new UserOutDao();
         dao.setToken(password);
-        return dao;        
+        return dao;     
     }
-
 }

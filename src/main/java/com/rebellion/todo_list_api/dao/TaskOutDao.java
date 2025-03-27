@@ -3,7 +3,7 @@ package com.rebellion.todo_list_api.dao;
 public class TaskOutDao {
     private String title;
     private String description;
-    private UserOutDao user;
+    private Long userid;
 
     public TaskOutDao() {
     }
@@ -24,12 +24,12 @@ public class TaskOutDao {
         this.description = description;
     }
 
-    public UserOutDao getUser() {
-        return user;
+    public Long getUserid() {
+        return userid;
     }
 
-    public void setUser(UserOutDao user) {
-        this.user = user;
+    public void setUserid(Long userid) {
+        this.userid = userid;
     }
 
 }
