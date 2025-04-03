@@ -1,12 +1,16 @@
 package com.rebellion.todo_list_api.service;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.rebellion.todo_list_api.dao.PaginationDao;
 import com.rebellion.todo_list_api.dao.TaskInDao;
 import com.rebellion.todo_list_api.dao.TaskOutDao;
 import com.rebellion.todo_list_api.entity.Task;
@@ -56,13 +60,21 @@ public class CustomerServiceimpl implements CustomerService {
 
     @Override
     public ResponseEntity<?> getTasks(String token, Long page, Long limit) {
-        // TODO: Need to fix getTasks(String token, Long page, Long limit)
         if(isLoggedIn()) {
             User user = userRepo.findByEmail((String) session.getAttribute("todo_email"));
             if(user.getPassword().equals(token)){
-                PaginationDao paginationDao = new PaginationDao();
-                // Implement pagination and filtering for the to-do list
-                return new ResponseEntity<>(paginationDao, HttpStatus.OK);
+                Pageable pageable = PageRequest.of(page.intValue(), limit.intValue()); // creates a request for requred page
+                Page<Task> taskPage = taskRepo.findByUser(pageable, user); // A page is returned
+                Page<TaskOutDao> taskDTOPage = taskPage.map(task -> task.toTaskOutDao()); // Task is converted to TaskOutDao to hide confidential information
+                List<TaskOutDao> dataList = taskDTOPage.getContent(); // Page is converted to List
+
+                HashMap<String, Object> map = new HashMap<>(); // could have used ModelMap as well
+                map.put("data", dataList);
+                map.put("page", page);
+                map.put("limit", limit);
+                map.put("total pages", taskPage.getTotalPages());
+
+                return new ResponseEntity<>(map, HttpStatus.OK);
             } else {
                 return new ResponseEntity<>("Not authorized!", HttpStatus.FORBIDDEN);
             }
@@ -75,7 +87,7 @@ public class CustomerServiceimpl implements CustomerService {
         if(isLoggedIn()) {
             User user = userRepo.findByEmail((String) session.getAttribute("todo_email"));
             if(user.getPassword().equals(token)){
-                Optional<Task> task = taskRepo.findById(id);
+                Optional<Task> task = taskRepo.findByUserAndId(user, id);
                 if(task.isPresent()) {
                     return new ResponseEntity<>(task.get().toTaskOutDao(), HttpStatus.FOUND);
                 }
@@ -92,7 +104,7 @@ public class CustomerServiceimpl implements CustomerService {
         if(isLoggedIn()) {
             User user = userRepo.findByEmail((String) session.getAttribute("todo_email"));
             if(user.getPassword().equals(token)){
-                Optional<Task> task = taskRepo.findById(id);
+                Optional<Task> task = taskRepo.findByUserAndId(user, id);
                 if(task.isPresent()) {
                     Task dbTask = task.get();
                     dbTask.setTitle(input.getTitle());
@@ -113,7 +125,7 @@ public class CustomerServiceimpl implements CustomerService {
         if(isLoggedIn()) {
             User user = userRepo.findByEmail((String) session.getAttribute("todo_email"));
             if(user.getPassword().equals(token)){
-                Optional<Task> task = taskRepo.findById(id);
+                Optional<Task> task = taskRepo.findByUserAndId(user, id);
                 if(task.isPresent()) {
                     taskRepo.deleteById(id);
                     return new ResponseEntity<>(HttpStatus.NO_CONTENT);

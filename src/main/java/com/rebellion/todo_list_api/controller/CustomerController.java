@@ -36,7 +36,7 @@ public class CustomerController {
     }
 
     @GetMapping("/tasks")
-    public ResponseEntity<?> getTasks(@RequestHeader(required = false) String token, @RequestParam Long page, @RequestParam Long limit) {
+    public ResponseEntity<?> getTasks(@RequestHeader(required = false) String token, @RequestParam(defaultValue = "0") Long page, @RequestParam(defaultValue = "10") Long limit) {
         if (token != null) {
             return customerServiceimpl.getTasks(token, page, limit);
         }
