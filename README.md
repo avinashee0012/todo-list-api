@@ -1,4 +1,4 @@
-# [Ongoing] Todo List API
+# [COMPLETE] Todo List API
 
 A RESTful API to allow users to manage their to-do list. The previous backend projects have only focused on the CRUD operations, but this project implements user authentication as well.
 
@@ -40,16 +40,16 @@ NOTE:
 ![Tomcat_Port_Find_Screenshot](images/Tomcat_Port_Find_Screenshot.png)
 
 ### Usage Example
-- Endpoint 1: <code>/</code> --> GET (Get Server status)
-- Endpoint 2: <code>/v1.0/api</code> --> GET (Get API status)
-- Endpoint 3: <code>/v1.0/api/register</code> --> POST (Register User)
-- Endpoint 4: <code>/v1.0/api/login</code> --> POST (Login User)
-- Endpoint 5: <code>/v1.0/api/user/tasks</code> --> POST (Create Task)
-- Endpoint 6: <code>/v1.0/api/user/tasks?page=1&limit=5</code> --> GET (Get all tasks created by logged-in user in paginated form)
-- Endpoint 7: <code>/v1.0/api/user/tasks</code> --> GET (Get all tasks created by logged-in user in paginated form. With default values of page = 0, limit = 10)
-- Endpoint 8: <code>/v1.0/api/user/tasks/{id}</code> --> GET (Get task by Id, if created by logged-in user)
-- Endpoint 9: <code>/v1.0/api/user/tasks/{id}</code> --> PUT (Update task by Id, if created by logged-in user)
-- Endpoint 10: <code>/v1.0/api/user/tasks/{id}</code> --> DELETE (Delete task by Id, if created by logged-in user)
+- <code>/</code> --> GET (Get Server status)
+- <code>/v1.0/api</code> --> GET (Get API status)
+- <code>/v1.0/api/register</code> --> POST (Register User)
+- <code>/v1.0/api/login</code> --> POST (Login User)
+- <code>/v1.0/api/user/tasks</code> --> POST (Create Task)
+- <code>/v1.0/api/user/tasks?page=1&limit=5</code> --> GET (Get all tasks in paginated form)
+- <code>/v1.0/api/user/tasks</code> --> GET (Get all tasks in paginated form. Default page = 0, limit = 10)
+- <code>/v1.0/api/user/tasks/{id}</code> --> GET (Get task by Id, if created by logged-in user)
+- <code>/v1.0/api/user/tasks/{id}</code> --> PUT (Update task by Id, if created by logged-in user)
+- <code>/v1.0/api/user/tasks/{id}</code> --> DELETE (Delete task by Id, if created by logged-in user)
 
 _____
 
