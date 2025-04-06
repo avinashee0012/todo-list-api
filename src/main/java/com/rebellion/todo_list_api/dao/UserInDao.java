@@ -3,7 +3,6 @@ package com.rebellion.todo_list_api.dao;
 import com.rebellion.todo_list_api.entity.User;
 
 import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.Size;
 
 public class UserInDao {
     private String name = "John Doe";
