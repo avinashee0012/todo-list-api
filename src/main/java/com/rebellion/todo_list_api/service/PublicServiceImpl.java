@@ -50,4 +50,10 @@ public class PublicServiceImpl implements PublicService{
         return new ResponseEntity<String>("Invalid Login", HttpStatus.NOT_ACCEPTABLE);
     }
 
+    @Override
+    public ResponseEntity<?> logoutUser() {
+        session.invalidate();
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
 }
