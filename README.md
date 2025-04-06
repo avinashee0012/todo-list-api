@@ -14,7 +14,7 @@ A RESTful API to allow users to manage their to-do list. The previous backend pr
 
 ### Technologies Used:
 - **Backend:** Java, Springboot, MySQL, Spring Data JPA, Rest API, Authentication, Input Validation
-- **Source Code Management:** Git, GitHub, Maven
+- **Source Code Management:** Git, GitHub, Maven, Swagger
 
 ### Installation
 1. Clone the repo
@@ -33,10 +33,10 @@ A RESTful API to allow users to manage their to-do list. The previous backend pr
     # The default MySQL username is "root", and by default, it has no password on a fresh installation.
     java -jar todo-list-api-0.0.1.jar --spring.datasource.url=jdbc:mysql://localhost:<MySQL_PORT>/<DATABASE_NAME> --spring.datasource.username=<MYSQL_USERNAME> --spring.datasource.password=<MySQL_PASSWORD>
 ```
-4. Visit http://localhost:8080/v1/api
+4. Visit http://localhost:8080/swagger-ui/index.html
 
 NOTE: 
-- If port 8080 is busy, another port will be used and can be found from terminal logs (see example below):
+- If port 8080 is busy, another port will be used by Tomcat and can be found from terminal logs (see example below):
 ![Tomcat_Port_Find_Screenshot](images/Tomcat_Port_Find_Screenshot.png)
 
 ### Usage Example
@@ -50,7 +50,7 @@ NOTE:
 - <code>/v1.0/api/user/tasks/{id}</code> --> GET (Get task by Id, if created by logged-in user)
 - <code>/v1.0/api/user/tasks/{id}</code> --> PUT (Update task by Id, if created by logged-in user)
 - <code>/v1.0/api/user/tasks/{id}</code> --> DELETE (Delete task by Id, if created by logged-in user)
-
+- <code>/v1.0/api/logout</code> --> GET (Logout user)
 _____
 
 ### Future releases

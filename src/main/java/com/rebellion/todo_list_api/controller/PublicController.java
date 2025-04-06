@@ -40,4 +40,9 @@ public class PublicController {
         return publicServiceImpl.loginUser(input);
     }
 
+    @GetMapping("/logout")
+    public ResponseEntity<?> logoutUser() {
+        return publicServiceImpl.logoutUser();
+    }
+
 }

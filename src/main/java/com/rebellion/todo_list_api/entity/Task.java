@@ -58,6 +58,7 @@ public class Task {
 
     public TaskOutDao toTaskOutDao() {
         TaskOutDao dao = new TaskOutDao();
+        dao.setId(id);
         dao.setTitle(title);
         dao.setDescription(description);
         dao.setUserid(user.getId());
