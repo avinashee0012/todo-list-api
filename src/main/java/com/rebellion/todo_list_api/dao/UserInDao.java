@@ -10,7 +10,6 @@ public class UserInDao {
     @NotEmpty(message = "Email cannot be empty!")
     private String email;
     @NotEmpty(message = "Password cannot be empty!")
-    @Size(min = 8, message = "Description cannot be less than 8 characters.")
     private String password;
 
     public UserInDao() {
